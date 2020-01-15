@@ -1,6 +1,10 @@
 
 # Copyright (c) 2020 Alexandre Quenon - UMONS
 
+"""
+Get data from files and dump them into a container, and vice-versa.
+"""
+
 
 
 # Filesystem management
