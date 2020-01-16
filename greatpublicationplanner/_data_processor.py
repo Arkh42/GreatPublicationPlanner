@@ -46,3 +46,6 @@ def check_data_integrity(data):
 # Sort functions
 def sort_on_start_date(data, ascending=True):
     return data.sort_values(by='start', ascending=ascending)
+
+def sort_on_submission_date(data, ascending=True):
+    return data.sort_values(by='submission', ascending=ascending)
