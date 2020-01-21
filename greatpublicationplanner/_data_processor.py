@@ -10,9 +10,21 @@ Process the data (integrity check, sort, filter) so that the drawer has always t
 import pandas as pd
 
 
-# Data modification
+# Data format: low-level functions
 def make_lower_case_header(data):
     data.columns = map(str.lower, data.columns)
+
+def convert_date_to_datetime(data):
+    """
+    Convert date into pandas.Timestamp.
+
+    Initial type is str when dumping data from files into pandas.Dataframe.
+    """
+    
+    data.start = pd.to_datetime(data.start)
+    data.end = pd.to_datetime(data.end)
+    data.submission = pd.to_datetime(data.submission)
+
 
 # Data integrity check: low-level functions
 def has_name(data):
@@ -26,6 +38,7 @@ def has_end_date(data):
 
 def has_submission_date(data):
     return 'submission' in data.columns
+
 
 # Data integrity check: high-level functions
 def check_data_integrity(data):
@@ -42,6 +55,7 @@ def check_data_integrity(data):
     
     if missing_fields:
         raise KeyError('Mandatory fields are missing in data: {}'.format(missing_fields))
+
 
 # Sort functions
 def sort_on_start_date(data, ascending=True):

@@ -5,6 +5,7 @@
 
 import unittest
 
+import pandas as pd
 
 import greatpublicationplanner._data_processor as processor
 import greatpublicationplanner._file_manager as file_manager
@@ -18,11 +19,20 @@ class DataProcessorTest(unittest.TestCase):
         processor.make_lower_case_header(self.data_ok)
 
 
-    # Test suite: data modification
+    # Test suite: data format
     def test_make_lower_case_header(self):
         processor.make_lower_case_header(self.data_raw)
         for header in self.data_raw:
             self.assertTrue(header.islower())
+    
+    def test_convert_date_to_datetime(self):
+        self.assertTrue(isinstance(self.data_ok['start'][0], str))
+        self.assertTrue(isinstance(self.data_ok['end'][0], str))
+        self.assertTrue(isinstance(self.data_ok['submission'][0], str))
+        processor.convert_date_to_datetime(self.data_ok)
+        self.assertTrue(isinstance(self.data_ok['start'][0], pd.Timestamp))
+        self.assertTrue(isinstance(self.data_ok['end'][0], pd.Timestamp))
+        self.assertTrue(isinstance(self.data_ok['submission'][0], pd.Timestamp))
     
 
     # Test suite: data integrity
