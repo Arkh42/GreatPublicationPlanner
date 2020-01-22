@@ -92,4 +92,4 @@ class DataProcessorTest(unittest.TestCase):
         try:
             processor.check_data_integrity(self.data_ok)
         except KeyError:
-            self.fail('An exception was thrown but not expected')
+            self.fail('An exception was thrown but not expected.')
