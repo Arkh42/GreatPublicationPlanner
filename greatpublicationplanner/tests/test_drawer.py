@@ -21,13 +21,29 @@ class DrawPropertiesTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.properties.edit_marker_style(category='non_existing_category')
     
-    def test_edit_marker_style__error__marker_property_name(self):
+    def test_edit_marker_style__error__property_name(self):
         with self.assertRaises(AttributeError):
             self.properties.edit_marker_style(category='start', non_existing_property='toto')
     
-    def test_edit_marker_style__error__marker_property_value(self):# FAILS because no idea how to implement the code properly
+    def test_edit_marker_style__error__marker_property_value(self):
         with self.assertRaises(ValueError):
             self.properties.edit_marker_style(category='start', marker='non_existing_value')
+    
+    def test_edit_marker_style__error__fillstyle_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_marker_style(category='start', fillstyle='non_existing_value')
+    
+    def test_edit_marker_style__error__color_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_marker_style(category='start', color='non_existing_value')
+    
+    def test_edit_marker_style__error__markersize_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_marker_style(category='start', markersize='non_existing_value')
+
+    def test_edit_marker_style__error__markersize_negative_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_marker_style(category='start', markersize=-3.0)
     
 
     def test_edit_marker_style__pass__start_style(self):
@@ -67,13 +83,17 @@ class DrawPropertiesTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.properties.edit_timespan_style(category='non_existing_category')
     
-    def test_edit_timespan_style__error__timespan_property_name(self):
+    def test_edit_timespan_style__error__property_name(self):
         with self.assertRaises(AttributeError):
             self.properties.edit_timespan_style(category='start-end', non_existing_property='toto')
     
-    def test_edit_timespan_style__error__timespan_property_value(self):# FAILS because no idea how to implement the code properly
+    def test_edit_timespan_style__error__linestyles_property_value(self):
         with self.assertRaises(ValueError):
             self.properties.edit_timespan_style(category='start-end', linestyles='non_existing_value')
+    
+    def test_edit_timespan_style__error__colors_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_timespan_style(category='start', colors='non_existing_value')
     
 
     def test_edit_timespan_style__pass__startend_style(self):
