@@ -2,3 +2,4 @@ matplotlib>=3.0.3
 numpy>=1.13.0
 pandas>=0.25.0
 pyautogui>=0.9.40
+xlrd>=1.0.0
