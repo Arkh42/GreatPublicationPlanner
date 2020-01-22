@@ -14,7 +14,7 @@ class PlannerBatch:
     """
 
     def __init__(self):
-        self.graphic_properties = drawer.DrawProperties()
+        self.draw_properties = drawer.DrawProperties()
         self.data = None
 
     def load_data(self, file_path):
