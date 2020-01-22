@@ -2,12 +2,20 @@
 Planning publication is sometimes a brain-teaser. The GreatPublicationPlanner gives you a tool to display the dates the conferences and other publications you might be interested in, and then to allow you to choose wisely.
 
 
-## Quick use of the package
+## GreatPublicationPlanner for the impatients
 
-Import the package with:
 
+Import the package and instanciate a batch-mode planner:
 ```python
 import greatpublicationplanner as gpp
+
+planner = gpp.PlannerBatch()
+```
+
+Then you can load and plot data
+```python
+planner.load_data(path_to_file)
+planner.plot_data()
 ```
 
 [Tutorials](./greatpublicationplanner/tutorials) are provided inside the package.

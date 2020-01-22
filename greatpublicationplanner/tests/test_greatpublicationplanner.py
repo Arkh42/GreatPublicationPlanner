@@ -10,6 +10,10 @@ import greatpublicationplanner as gpp
 
 class PlannerBatchTest(unittest.TestCase, gpp.PlannerBatch):
 
+    def __init__(self, methodName='runTest'):
+        super().__init__(methodName=methodName)
+        gpp.PlannerBatch.__init__(self)
+
     def setUp(self):
         self.path__no_file = './greatpublicationplanner/tests/examples/no_file.csv'
         self.path__file_not_supported = './greatpublicationplanner/tests/examples/list_conf.toto'
@@ -33,5 +37,13 @@ class PlannerBatchTest(unittest.TestCase, gpp.PlannerBatch):
     def test_load_data__pass(self):
         try:
             self.load_data(self.path__data_ok)
+        except:
+            self.fail('Unpected exception.')
+    
+    def test_plot_data__pass(self):
+        self.load_data(self.path__data_ok)
+
+        try:
+            self.plot_data(show=False)
         except:
             self.fail('Unpected exception.')
