@@ -5,17 +5,45 @@
 
 import unittest
 
-
-import greatpublicationplanner._file_manager as file_manager
+import threading
+import time
+import pyautogui
+pyautogui.PAUSE = 1.0
+pyautogui.FAILSAFE = True
 
 from pathlib import Path
 from pandas import DataFrame
+
+import greatpublicationplanner._file_manager as file_manager
+
+
+class PressThread(threading.Thread):
+    """
+    A thread for automatic testing in GUI mode.
+
+    The thread must be paused immediately after being run to be sure that the GUI has been started before controlling it.
+    """
+
+    def __init__(self, cmd, msg):
+        super(PressThread, self).__init__()
+        self.commands = cmd
+        self.message = msg
+
+    def run(self):
+        time.sleep(1.0)
+        if self.message:
+            pyautogui.typewrite(self.message)
+            time.sleep(1.0)
+        pyautogui.press(self.commands)
 
 
 class FileManagerTest(unittest.TestCase):
 
     # suite_open_file_gui
     def test_open_file_gui__click_cancel(self):
+        t = PressThread(cmd=['tab', 'tab', 'enter'], msg='Automatic cancel')
+        t.start()
+
         with self.assertRaises(FileNotFoundError):
             file_manager.open_file_gui()
     
