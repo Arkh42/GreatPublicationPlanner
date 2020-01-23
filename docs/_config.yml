@@ -1,13 +1,3 @@
-lsi: false
-safe: true
-source: GreatPublicationPlanner
-incremental: false
-highlighter: rouge
-gist:
-    noscript: false
-kramdown:
-    math_engine: mathjax
-    syntax_highlighter: rouge
-theme: jekyll-theme-minimal
 title: GreatPublicationPlanner
-show_downloads: "false"
+theme: jekyll-theme-cayman
+show_downloads: false
