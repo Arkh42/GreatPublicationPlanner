@@ -33,11 +33,20 @@ planner.plot_data()
 
 ## Status
 
-[![License](https://img.shields.io/github/license/Arkh42/GreatPublicationPlanner?color=blue&label=License)](LICENSE)
-&middot;
-[![Windows Build Status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/WIN-pythonpackage?label=Windows%20build)](https://github.com/Arkh42/GreatPublicationPlanner/actions?query=workflow%3AWIN-pythonpackage)
-&middot;
-[![Linux Build Status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/LIN-pythonpackage?label=Linux%20build)](https://github.com/Arkh42/GreatPublicationPlanner/actions?query=workflow%3ALIN-pythonpackage)
+[![License](https://img.shields.io/github/license/Arkh42/GreatPublicationPlanner?color=blue)](LICENSE)
+
+
+[![Windows build status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/WIN-pythonpackage?label=Windows%20build)](https://github.com/Arkh42/GreatPublicationPlanner/actions?query=workflow%3AWIN-pythonpackage)
+&bull;
+[![Linux build status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/LIN-pythonpackage?label=Linux%20build)](https://github.com/Arkh42/GreatPublicationPlanner/actions?query=workflow%3ALIN-pythonpackage)
+
+![Language counts](https://img.shields.io/github/languages/count/Arkh42/GreatPublicationPlanner)
+&bull;
+![Top language](https://img.shields.io/github/languages/top/Arkh42/GreatPublicationPlanner)
+&bull;
+[![Issues](https://img.shields.io/github/issues-raw/Arkh42/GreatPublicationPlanner)](https://github.com/Arkh42/GreatPublicationPlanner/issues?q=is%3Aopen+is%3Aissue)
+&bull;
+[![Issues closed](https://img.shields.io/github/issues-closed-raw/Arkh42/GreatPublicationPlanner)](https://github.com/Arkh42/GreatPublicationPlanner/issues?q=is%3Aissue+is%3Aclosed)
 
 
 ## Organization of the package
