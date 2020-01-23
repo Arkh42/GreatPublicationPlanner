@@ -4,7 +4,10 @@ source: GreatPublicationPlanner
 incremental: false
 highlighter: rouge
 gist:
-  noscript: false
+    noscript: false
 kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
+    math_engine: mathjax
+    syntax_highlighter: rouge
+theme: jekyll-theme-minimal
+title: GreatPublicationPlanner
+show_downloads: "false"

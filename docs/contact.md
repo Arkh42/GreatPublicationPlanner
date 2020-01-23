@@ -3,6 +3,6 @@ layout: default
 title: Contact
 ---
 
-# Contact
+## Author and maintainer
 
-- Author and maintainer: [Alexandre Quenon](contact/alexandrequenon)
+- [Alexandre Quenon](contact/alexandrequenon)
