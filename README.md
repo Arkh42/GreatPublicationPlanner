@@ -33,9 +33,10 @@ planner.plot_data()
 
 ## Status
 
-![License](https://img.shields.io/github/license/Arkh42/GreatPublicationPlanner?color=blue&label=License)
+[![License](https://img.shields.io/github/license/Arkh42/GreatPublicationPlanner?color=blue&label=License)](LICENSE)
 &middot;
 ![Windows Build Status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/WIN-pythonpackage?label=Windows%20build)
+&middot;
 ![Linux Build Status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/LIN-pythonpackage?label=Linux%20build)
 
 
