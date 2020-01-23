@@ -1,9 +1,8 @@
 ---
 layout: default
-title: GreatPublicationPlanner
 ---
 
-# GreatPublicationPlanner
+# Navigation
 
 - [About](about)
 - [Contact](contact)
