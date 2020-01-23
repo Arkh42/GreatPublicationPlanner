@@ -1,5 +1,15 @@
 # GreatPublicationPlanner
-Planning publication is sometimes a brain-teaser. The GreatPublicationPlanner gives you a tool to display the dates the conferences and other publications you might be interested in, and then to allow you to choose wisely.
+
+GreatPublicationPlanner is a tool to display the dates of the conferences and other publications 
+you might be interested in.
+Visualization will allow you to choose wisely.
+
+
+## Table of contents
+
+- [GreatPublicationPlanner for the impatients](#greatpublicationplanner-for-the-impatients)
+- [Status](#status)
+- [Organization of the package](#organization-of-the-package)
 
 
 ## GreatPublicationPlanner for the impatients
@@ -21,7 +31,15 @@ planner.plot_data()
 [Tutorials](./greatpublicationplanner/tutorials) are provided inside the package.
 
 
+## Status
+
+[![License](https://img.shields.io/github/license/Arkh42/GreatPublicationPlanner?color=blue&label=License)]
+&middot;
+[![Windows Build Status](https://img.shields.io/github/workflow/status/Arkh42/GreatPublicationPlanner/Python package?label=Windows%20build)]
+
+
 ## Organization of the package
+
 Currently the package includes three private libraries:
 1. `_file_manager.py`, whose role is to get data from permitted files;
 2. `_data_processor.py`, whose role is to check data integrity and format as expected by other libraries;
