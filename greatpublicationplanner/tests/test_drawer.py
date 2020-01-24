@@ -116,6 +116,20 @@ class DrawPropertiesTest(unittest.TestCase):
         self.assertTrue(self.properties._timespan_styles['submission-start']['linestyles'] == 'dotted') # default
         self.properties.edit_timespan_submissionstart_style(linestyles='dashdot')
         self.assertTrue(self.properties._timespan_styles['submission-start']['linestyles'] == 'dashdot')
+
+
+    # Test suite: legend
+    def test_hide_legend(self):
+        self.assertTrue(self.properties._display_legend) # default
+        self.properties.hide_legend()
+        self.assertFalse(self.properties._display_legend)
+    
+    def test_show_legend(self):
+        self.properties._display_legend = False
+        self.assertFalse(self.properties._display_legend)
+        self.properties.show_legend()
+        self.assertTrue(self.properties._display_legend)
+        
     
 
     # Test suite: draw

@@ -46,6 +46,8 @@ class DrawProperties:
             'submission-start':self._timespan_submissionstart_style
         }
 
+        self._display_legend = True
+
     # Callbacks for value testing
     def __is_available_marker(self, marker): # Matplotlib 3.1.1
         return marker in ('o', 'v', '^', '<', '>', '8', 's', 'p', '*', 'h', 'H', 'D', 'd', 'P', 'X')
@@ -95,7 +97,7 @@ class DrawProperties:
                 raise AttributeError('Properties can be {}.'.format(self.__available_timespan_properties.keys()))
         else:
             raise ValueError('The category argument must be {}.'.format(self._timespan_styles.keys()))
-    
+
 
     # High-level interface
     def edit_marker_start_style(self, **marker_properties):
@@ -112,6 +114,13 @@ class DrawProperties:
     
     def edit_timespan_submissionstart_style(self, **timespan_properties):
         self.edit_timespan_style(category='submission-start', **timespan_properties)
+
+
+    def show_legend(self):
+        self._display_legend = True
+    
+    def hide_legend(self):
+        self._display_legend = False
 
 
 def draw_timeline(data, draw_properties, use_abbreviations=True):
