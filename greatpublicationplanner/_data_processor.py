@@ -30,6 +30,9 @@ def convert_date_to_datetime(data):
 def has_name(data):
     return 'name' in data.columns
 
+def has_abbreviation(data):
+    return 'abbreviation' in data.columns
+
 def has_start_date(data):
     return 'start' in data.columns
 
@@ -46,6 +49,8 @@ def check_data_integrity(data):
 
     if not has_name(data):
         missing_fields.append('name')
+    if not has_abbreviation(data):
+        missing_fields.append('abbreviation')
     if not has_start_date(data):
         missing_fields.append('start')
     if not has_end_date(data):

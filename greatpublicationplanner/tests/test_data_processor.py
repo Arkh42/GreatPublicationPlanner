@@ -42,6 +42,14 @@ class DataProcessorTest(unittest.TestCase):
 
     def test_has_name__true(self):
         self.assertTrue(processor.has_name(self.data_ok))
+    
+
+    def test_has_abbreviation__false(self):
+        data_corrupted = self.data_ok.rename(columns={'abbreviation':'toto'})
+        self.assertFalse(processor.has_abbreviation(data_corrupted))
+
+    def test_has_abbreviation__true(self):
+        self.assertTrue(processor.has_abbreviation(self.data_ok))
 
 
     def test_has_start_date__false(self):
@@ -70,6 +78,11 @@ class DataProcessorTest(unittest.TestCase):
 
     def test_check_data_integrity__missing_name(self):
         data_corrupted = self.data_ok.rename(columns={'name':'toto'})
+        with self.assertRaises(KeyError):
+            processor.check_data_integrity(data_corrupted)
+    
+    def test_check_data_integrity__missing_abbreviation(self):
+        data_corrupted = self.data_ok.rename(columns={'abbreviation':'toto'})
         with self.assertRaises(KeyError):
             processor.check_data_integrity(data_corrupted)
     
