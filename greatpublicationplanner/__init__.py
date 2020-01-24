@@ -36,6 +36,14 @@ class PlannerBatch:
         except:
             raise RuntimeError('Unexpected error!')
     
+    def sort_data(self, on='submission', ascending=True):
+        if on in proc.sort_functions.keys():
+            func = proc.sort_functions[on]
+            func(self.data, ascending)
+        else:
+            raise ValueError('Available sorting are {}'.format(proc.sort_functions.keys()))
+        
+    
     def plot_data(self, show=True):
         try:
             fig, ax = drawer.draw_timeline(self.data, self.draw_properties, self.USE_ABBREV)
