@@ -106,3 +106,40 @@ class DataProcessorTest(unittest.TestCase):
             processor.check_data_integrity(self.data_ok)
         except KeyError:
             self.fail('An exception was thrown but not expected.')
+    
+
+    # Test suite: sort
+    def test_sort_on_name__ascending(self):
+        processor.sort_on_name(self.data_ok, ascending=True)
+        self.assertTrue(self.data_ok.name.is_monotonic_increasing)
+    
+    def test_sort_on_name__descending(self):
+        processor.sort_on_name(self.data_ok, ascending=False)
+        self.assertTrue(self.data_ok.name.is_monotonic_decreasing)
+    
+
+    def test_sort_on_submission__ascending(self):
+        processor.sort_on_submission(self.data_ok, ascending=True)
+        self.assertTrue(self.data_ok.submission.is_monotonic_increasing)
+    
+    def test_sort_on_submission__descending(self):
+        processor.sort_on_submission(self.data_ok, ascending=False)
+        self.assertTrue(self.data_ok.submission.is_monotonic_decreasing)
+    
+
+    def test_sort_on_start__ascending(self):
+        processor.sort_on_start(self.data_ok, ascending=True)
+        self.assertTrue(self.data_ok.start.is_monotonic_increasing)
+    
+    def test_sort_on_start__descending(self):
+        processor.sort_on_start(self.data_ok, ascending=False)
+        self.assertTrue(self.data_ok.start.is_monotonic_decreasing)
+    
+
+    def test_sort_on_end__ascending(self):
+        processor.sort_on_end(self.data_ok, ascending=True)
+        self.assertTrue(self.data_ok.end.is_monotonic_increasing)
+    
+    def test_sort_on_end__descending(self):
+        processor.sort_on_end(self.data_ok, ascending=False)
+        self.assertTrue(self.data_ok.end.is_monotonic_decreasing)
