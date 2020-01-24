@@ -2,8 +2,9 @@ name: LIN-pythonpackage
 
 on:
     push:
-        branches:
+        branches-ignore:
             - master
+            - gh-doc
 
 jobs:
     build:
@@ -13,6 +14,7 @@ jobs:
             max-parallel: 4
             matrix:
                 python-version: [3.5, 3.6, 3.7]
+                
         steps:
         - uses: actions/checkout@v1
         - name: Install python3 tkinter
