@@ -40,7 +40,7 @@ The package is organized as follows:
 
 ## Planner classes
 
-Currently, only on class is available: `PlannerBatch`, which creates a planner for batch-mode operations,
+Currently, only one class is available: `PlannerBatch`, which creates a planner for batch-mode operations,
 i.e., no GUI except for showing the resulting plot.
 
 A `PlannerGUI` class is planned to allow the user to create a planner with some GUI interactivity,
