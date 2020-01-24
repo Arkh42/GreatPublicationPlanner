@@ -114,14 +114,18 @@ class DrawProperties:
         self.edit_timespan_style(category='submission-start', **timespan_properties)
 
 
-def draw_timeline(data, draw_properties):
+def draw_timeline(data, draw_properties, use_abbreviations=True):
     # Prepare figure and common axes
     fig, ax = plt.subplots(1, 1)
 
     # Define the position of labels on y axis for compactness
     ylocs = [i*0.2 for i in range(len(data.name))]
     ax.set_yticks(ylocs)
-    ax.set_yticklabels(data.name)
+
+    if use_abbreviations:
+        ax.set_yticklabels(data.abbreviation.fillna(data.name))
+    else:
+        ax.set_yticklabels(data.name)
 
     # Plot the data
     ax.xaxis_date()

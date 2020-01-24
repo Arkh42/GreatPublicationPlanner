@@ -21,6 +21,8 @@ class PlannerBatch:
         self.draw_properties = drawer.DrawProperties()
         self.data = None
 
+        self.USE_ABBREV = True
+
     def load_data(self, file_path):
         try:
             self.data = file_manager.open_file_shell(file_path)
@@ -36,7 +38,7 @@ class PlannerBatch:
     
     def plot_data(self, show=True):
         try:
-            fig, ax = drawer.draw_timeline(self.data, self.draw_properties)
+            fig, ax = drawer.draw_timeline(self.data, self.draw_properties, self.USE_ABBREV)
             if show:
                 plt.show()
         except:

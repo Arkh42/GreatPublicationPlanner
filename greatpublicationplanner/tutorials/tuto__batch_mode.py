@@ -9,6 +9,8 @@ import greatpublicationplanner as gpp
 
 
 planner = gpp.PlannerBatch()
+planner.USE_ABBREV = True # default is true
+
 file_path = "./greatpublicationplanner/tests/examples/short_list_conf.csv"
 no_file_path = "./greatpublicationplanner/tests/examples/no_file.csv"
 
