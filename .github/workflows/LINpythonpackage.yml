@@ -20,6 +20,9 @@ jobs:
           uses: actions/setup-python@v1
           with:
             python-version: ${{ matrix.python-version }}
+        - name: Install python3 tkinter
+          run: |
+            sudo apt-get install python3-tk
         - name: Install dependencies
           run: |
             python -m pip install --upgrade pip
