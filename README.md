@@ -22,11 +22,12 @@ import greatpublicationplanner as gpp
 planner = gpp.PlannerBatch()
 ```
 
-Then you can load and plot data
+Then you can load and plot data with
 ```python
 planner.load_data(path_to_file)
 planner.plot_data()
 ```
+and that's it!
 
 [Tutorials](./greatpublicationplanner/tutorials) are provided inside the package.
 
