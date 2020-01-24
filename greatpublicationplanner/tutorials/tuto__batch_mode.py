@@ -24,4 +24,5 @@ else:
     planner.draw_properties.edit_marker_start_style(color='g')
     planner.draw_properties.edit_marker_end_style(color='b')
     planner.draw_properties.edit_marker_submission_style(marker='X')
+    planner.draw_properties.show_legend()
     planner.plot_data()

@@ -139,10 +139,10 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
     # Plot the data
     ax.xaxis_date()
     ax.hlines(ylocs, dt.date2num(data.start), dt.date2num(data.end), **draw_properties._timespan_startend_style)
-    ax.plot(dt.date2num(data.start), ylocs, linestyle='None', **draw_properties._marker_start_style)
-    ax.plot(dt.date2num(data.end), ylocs, linestyle='None', **draw_properties._marker_end_style)
+    marker_start = ax.plot(dt.date2num(data.start), ylocs, linestyle='None', **draw_properties._marker_start_style)
+    marker_end = ax.plot(dt.date2num(data.end), ylocs, linestyle='None', **draw_properties._marker_end_style)
     ax.hlines(ylocs, dt.date2num(data.submission), dt.date2num(data.start), **draw_properties._timespan_submissionstart_style)
-    ax.plot(dt.date2num(data.submission), ylocs, linestyle='None', **draw_properties._marker_submission_style)
+    marker_submission = ax.plot(dt.date2num(data.submission), ylocs, linestyle='None', **draw_properties._marker_submission_style)
 
     # Display timeline per week (x axis)
     rule = dt.rrulewrapper(dt.WEEKLY, interval=1)
@@ -161,5 +161,9 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
 
     # Display grid as dotted
     ax.grid(linestyle = ':')
+
+    # Display legend
+    if draw_properties._display_legend:
+        ax.legend(['Start', 'End', 'Submission'])
 
     return fig, ax
