@@ -20,3 +20,6 @@ Then I decided to complete my industrial experience with academic research by ma
 # Contact details
 
 - e-mail: [aquenon@hotmail.be](mailto:aquenon@hotmail.be)
+
+
+[back](./contact)
