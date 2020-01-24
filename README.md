@@ -15,7 +15,7 @@ Visualization will allow you to choose wisely.
 ## GreatPublicationPlanner for the impatients
 
 
-Import the package and instanciate a batch-mode planner:
+Import the package and instantiate a batch-mode planner:
 ```python
 import greatpublicationplanner as gpp
 
