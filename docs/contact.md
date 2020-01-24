@@ -10,4 +10,7 @@ title: Contact
 
 # Contributors
 
+See on [GitHub Insights](https://github.com/Arkh42/GreatPublicationPlanner/graphs/contributors).
+
+
 [back](./)
