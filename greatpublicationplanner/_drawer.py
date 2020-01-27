@@ -6,9 +6,11 @@ Draw the graphics to display the information about publications.
 """
 
 
+from datetime import datetime
 from matplotlib import pyplot as plt
 from matplotlib import dates as dt
 from matplotlib.colors import is_color_like
+from pandas import to_datetime
 from pandas.plotting import register_matplotlib_converters
 
 register_matplotlib_converters()
@@ -24,7 +26,7 @@ class DrawProperties:
             'marker':self.__is_available_marker,
             'fillstyle':self.__is_available_fillstyle,
             'color':self.__is_available_color,
-            'markersize':self.__is_available_markersize
+            'markersize':self.__is_available_size
         }
         self._marker_start_style = {'marker':'o', 'markersize':5.0, 'color':'k', 'fillstyle':'full'}
         self._marker_end_style = self._marker_start_style.copy()
@@ -46,7 +48,15 @@ class DrawProperties:
             'submission-start':self._timespan_submissionstart_style
         }
 
+        self.__available_today_properties = {
+            'linestyle':self.__is_available_linestyle,
+            'color':self.__is_available_color,
+            'linewidth':self.__is_available_size
+        }
+        self._today_style = {'linestyle':'-', 'linewidth':'2', 'color':'r'}
+
         self._display_legend = True
+
 
     # Callbacks for value testing
     def __is_available_marker(self, marker): # Matplotlib 3.1.1
@@ -58,7 +68,7 @@ class DrawProperties:
     def __is_available_color(self, color):
         return is_color_like(color)
     
-    def __is_available_markersize(self, size):
+    def __is_available_size(self, size):
         try:
             size = float(size)
         except ValueError:
@@ -68,11 +78,14 @@ class DrawProperties:
                 return True
             else:
                 return False
-    
+
+    def __is_available_linestyle(self, style):
+        return style in ('-', '--', '-.', ':')
+
     def __is_available_linestyles(self, style):
         return style in ('solid', 'dashed', 'dashdot', 'dotted')
 
-    
+
     # Low-level interface
     def edit_marker_style(self, category, **marker_properties):
         if category in self._marker_styles.keys():
@@ -97,6 +110,15 @@ class DrawProperties:
                 raise AttributeError('Properties can be {}.'.format(self.__available_timespan_properties.keys()))
         else:
             raise ValueError('The category argument must be {}.'.format(self._timespan_styles.keys()))
+    
+    def edit_today_style(self, **today_properties):
+        if all(feature in self.__available_today_properties.keys() for feature in today_properties.keys()):
+            if all(map(lambda x: self.__available_today_properties[x](today_properties[x]), today_properties.keys())):
+                self._today_style.update(today_properties)
+            else:
+                raise ValueError('Forbidden value passed to a today property.')
+        else:
+            raise AttributeError('Properties can be {}.'.format(self.__available_today_properties.keys()))
 
 
     # High-level interface
@@ -167,3 +189,11 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
         ax.legend(['Start', 'End', 'Submission'])
 
     return fig, ax
+
+
+def plot_today_on(ax, draw_properties):
+    date = datetime.today().strftime('%Y-%m-%d')
+    date = to_datetime(date)
+
+    ax.axvline(date, **draw_properties._today_style)
+    plt.text(date, ax.get_ylim()[1], 'Today', color=draw_properties._today_style['color'], horizontalalignment='center', verticalalignment='bottom')

@@ -118,6 +118,34 @@ class DrawPropertiesTest(unittest.TestCase):
         self.assertTrue(self.properties._timespan_styles['submission-start']['linestyles'] == 'dashdot')
 
 
+    # Test suite: editing properties - today style
+    def test_edit_today_style__error__property_name(self):
+        with self.assertRaises(AttributeError):
+            self.properties.edit_today_style(non_existing_property='toto')
+
+    def test_edit_today_style__error__linestyle_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_today_style(linestyle='non_existing_value')
+
+    def test_edit_today_style__error__color_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_today_style(color='non_existing_value')
+
+    def test_edit_today_style__error__linewidth_property_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_today_style(linewidth='non_existing_value')
+
+    def test_edit_today_style__error__linewidth_negative_value(self):
+        with self.assertRaises(ValueError):
+            self.properties.edit_today_style(linewidth=-3.0)
+
+
+    def test_edit_today_style__pass(self):
+        self.assertTrue(self.properties._today_style['linestyle'] == '-') # default
+        self.properties.edit_today_style(linestyle='-.')
+        self.assertTrue(self.properties._today_style['linestyle'] == '-.')
+
+
     # Test suite: legend
     def test_hide_legend(self):
         self.assertTrue(self.properties._display_legend) # default

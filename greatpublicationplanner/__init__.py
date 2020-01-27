@@ -44,9 +44,11 @@ class PlannerBatch:
             raise ValueError('Available sorting are {}'.format(proc.sort_functions.keys()))
         
     
-    def plot_data(self, show=True):
+    def plot_data(self, markToday=True, show=True):
         try:
             fig, ax = drawer.draw_timeline(self.data, self.draw_properties, self.USE_ABBREV)
+            if markToday:
+                drawer.plot_today_on(ax, self.draw_properties)
             if show:
                 plt.show()
         except:
