@@ -167,28 +167,31 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
     marker_submission = ax.plot(dt.date2num(data.submission), ylocs, linestyle='None', **draw_properties._marker_submission_style)
 
     # Display timeline per week (x axis)
-    rule = dt.rrulewrapper(dt.WEEKLY, interval=1)
+    rule = dt.rrulewrapper(dt.MONTHLY, interval=1)
     loc = dt.RRuleLocator(rule)
     ax.xaxis.set_major_locator(loc)
 
     # Date format (x axis)
-    formatter = dt.DateFormatter('%Y-%m-%d')
+    formatter = dt.DateFormatter('%b\n%Y')
     ax.xaxis.set_major_formatter(formatter)
-
-    # Rotate and align the tick labels so they look better
-    fig.autofmt_xdate()
 
     # Revert y axis for display in chronological order
     ax.invert_yaxis()
 
     # Display grid as dotted
-    ax.grid(linestyle = ':')
+    ax.grid(linestyle=':')
+
+    # Display days under markers
+    for subm, y in zip(data.submission, ylocs):
+        plt.text(dt.date2num(subm), y+0.01, subm.day, horizontalalignment='center', verticalalignment='top')
+    for start, y in zip(data.start, ylocs):
+        plt.text(dt.date2num(start), y+0.01, start.day, horizontalalignment='right', verticalalignment='top')
+    for end, y in zip(data.end, ylocs):
+        plt.text(dt.date2num(end), y+0.01, end.day, horizontalalignment='left', verticalalignment='top')
 
     # Display locations
-    i = 0
-    for index, row in data.iterrows():
-        plt.text(dt.date2num(row['start']), ylocs[i], row['location'], verticalalignment='bottom')
-        i = i+1
+    for x, y, z in zip(data.start, ylocs, data.location):
+        plt.text(dt.date2num(x), y, z, verticalalignment='bottom')
 
     # Display legend
     if draw_properties._display_legend:
