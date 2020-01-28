@@ -166,14 +166,9 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
     ax.hlines(ylocs, dt.date2num(data.submission), dt.date2num(data.start), **draw_properties._timespan_submissionstart_style)
     marker_submission = ax.plot(dt.date2num(data.submission), ylocs, linestyle='None', **draw_properties._marker_submission_style)
 
-    # Display timeline per week (x axis)
-    rule = dt.rrulewrapper(dt.MONTHLY, interval=1)
-    loc = dt.RRuleLocator(rule)
-    ax.xaxis.set_major_locator(loc)
-
-    # Date format (x axis)
-    formatter = dt.DateFormatter('%b\n%Y')
-    ax.xaxis.set_major_formatter(formatter)
+    # Format x axis
+    ax.xaxis.set_major_locator(dt.MonthLocator())
+    ax.xaxis.set_major_formatter(dt.DateFormatter('%b\n%Y'))
 
     # Revert y axis for display in chronological order
     ax.invert_yaxis()
