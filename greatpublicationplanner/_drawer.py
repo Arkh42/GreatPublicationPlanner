@@ -184,6 +184,12 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
     # Display grid as dotted
     ax.grid(linestyle = ':')
 
+    # Display locations
+    i = 0
+    for index, row in data.iterrows():
+        plt.text(dt.date2num(row['start']), ylocs[i], row['location'], verticalalignment='bottom')
+        i = i+1
+
     # Display legend
     if draw_properties._display_legend:
         ax.legend(['Start', 'End', 'Submission'])
