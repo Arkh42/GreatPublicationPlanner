@@ -152,6 +152,7 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
     # Define the position of labels on y axis for compactness
     ylocs = [i*0.2 for i in range(len(data.name))]
     ax.set_yticks(ylocs)
+    local_data = data.assign(ylocs=ylocs)
 
     if use_abbreviations:
         ax.set_yticklabels(data.abbreviation.fillna(data.name))
@@ -177,16 +178,16 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
     ax.grid(linestyle=':')
 
     # Display days under markers
-    for subm, y in zip(data.submission, ylocs):
-        plt.text(dt.date2num(subm), y+0.01, subm.day, horizontalalignment='center', verticalalignment='top')
-    for start, y in zip(data.start, ylocs):
-        plt.text(dt.date2num(start), y+0.01, start.day, horizontalalignment='right', verticalalignment='top')
-    for end, y in zip(data.end, ylocs):
-        plt.text(dt.date2num(end), y+0.01, end.day, horizontalalignment='left', verticalalignment='top')
+    for _, row in local_data.dropna(subset=['submission']).iterrows():
+        plt.text(dt.date2num(row['submission']), row['ylocs']+0.01, row['submission'].day, horizontalalignment='left', verticalalignment='top')
+    for _, row in local_data.dropna(subset=['start']).iterrows():
+        plt.text(dt.date2num(row['start']), row['ylocs']+0.01, row['start'].day, horizontalalignment='left', verticalalignment='top')
+    for _, row in local_data.dropna(subset=['end']).iterrows():
+        plt.text(dt.date2num(row['end']), row['ylocs']+0.01, row['end'].day, horizontalalignment='left', verticalalignment='top')
 
     # Display locations
-    for x, y, z in zip(data.start, ylocs, data.location):
-        plt.text(dt.date2num(x), y, z, verticalalignment='bottom')
+    for _, row in local_data.dropna(subset=['start']).iterrows():
+        plt.text(dt.date2num(row['start']), row['ylocs'], row['location'], verticalalignment='bottom')
 
     # Display legend
     if draw_properties._display_legend:

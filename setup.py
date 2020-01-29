@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="GreatPublicationPlanner",
-    version="0.1.7",
+    version="0.1.8",
     author="Alexandre Quenon",
     author_email="aquenon@hotmail.be",
     description="A package to display target publications and allow to choose wisely",

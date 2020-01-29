@@ -13,6 +13,7 @@ planner.USE_ABBREV = True # default is true
 
 file_path = "./greatpublicationplanner/tests/examples/short_list_conf.csv"
 no_file_path = "./greatpublicationplanner/tests/examples/no_file.csv"
+file_with_NaN_path = "./greatpublicationplanner/tests/examples/short_list_conf_missing_data.csv"
 
 try:
     planner.load_data(file_path)
