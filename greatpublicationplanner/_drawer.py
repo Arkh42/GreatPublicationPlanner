@@ -179,9 +179,9 @@ def draw_timeline(data, draw_properties, use_abbreviations=True):
 
     # Display days under markers
     for _, row in local_data.dropna(subset=['submission']).iterrows():
-        plt.text(dt.date2num(row['submission']), row['ylocs']+0.01, row['submission'].day, horizontalalignment='left', verticalalignment='top')
+        plt.text(dt.date2num(row['submission']), row['ylocs']+0.01, row['submission'].day, horizontalalignment='center', verticalalignment='top')
     for _, row in local_data.dropna(subset=['start']).iterrows():
-        plt.text(dt.date2num(row['start']), row['ylocs']+0.01, row['start'].day, horizontalalignment='left', verticalalignment='top')
+        plt.text(dt.date2num(row['start']), row['ylocs']+0.01, row['start'].day, horizontalalignment='right', verticalalignment='top')
     for _, row in local_data.dropna(subset=['end']).iterrows():
         plt.text(dt.date2num(row['end']), row['ylocs']+0.01, row['end'].day, horizontalalignment='left', verticalalignment='top')
 
